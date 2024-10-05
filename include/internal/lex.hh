@@ -38,23 +38,19 @@ enum class TOKEN_TYPE : char {
 };
 
 struct TOKEN {
-  std::size_t line = 1L;
-  std::string token_value;
-  TOKEN_TYPE type;
-  TOKEN(TOKEN_TYPE tp, std::size_t ln, std::string tv)
-  : line(ln), token_value(tv), type(tp) {}; 
-  
+    std::size_t line = 1L;
+    std::string token_value;
+    TOKEN_TYPE type;
+    TOKEN(TOKEN_TYPE tp, std::size_t ln, std::string tv) : line(ln), token_value(tv), type(tp){};
 };
 
 class Lexer {
 public:
-  Lexer(const std::stringstream& src) : source_stream(src) {}
-  [[nodiscard("Should use the token")]] static TOKEN lex(void);
+    Lexer(const std::stringstream& src) : source_stream(src) {}
+    [[nodiscard("Should use the token")]] static TOKEN lex(void);
+
 private:
-  const std::stringstream& source_stream;
+    const std::stringstream& source_stream;
 };
 
 #endif
-
-
-

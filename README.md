@@ -1,4 +1,4 @@
-## Pleazaro (plz)
+## Plezaro (plz)
 
 A tiny PL/0 compiler with various own additions. A lot of my additions are based on Oberon-O.
 
