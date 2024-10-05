@@ -1,13 +1,12 @@
-# CPP-Template
+## Pleazaro (plz)
 
-Begin by install clang, python3-dev, python3-pip, libc++-dev, cmake, ninja-build.
+A tiny PL/0 compiler with various own additions. A lot of my additions are based on Oberon-O.
 
-Edit the CMakeLists EXEC\_NAME to set the default executable name. Also set project() in CMakeLists.
-Generate the makefiles (default, Unix Makefiles) with `./build.sh`
+The code is for my learning purposes.
 
-The script generates a `out` directory and copies the compile\_commands.json to the root directory for editor use. 
-`cd out` then you can call `make` to generate the executable.
+## Notes
 
-To quickly clean the generated cmake files, run `./build.sh clean` 
-
-
+- A lot is borrowed from Wirth's books. 
+- Use the logger provided in `include/internal` for any debug comms to console.
+- `CMakeLists.txt` has the `-DDEBUG` flag. Turn off for release builds.
+- REMINDER: Will experiment with CPM in CMakeLists! 

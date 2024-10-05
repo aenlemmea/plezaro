@@ -6,6 +6,6 @@ set(CMAKE_CXX_COMPILER clang++)
 set(EXEC_NAME plz)
 
 # add_definitions(-DDEBUG)
-add_executable(${EXEC_NAME} src/main.cpp)
+add_executable(${EXEC_NAME} src/main.cc)
 target_include_directories(${EXEC_NAME} PUBLIC include/)
 target_include_directories(${EXEC_NAME} PRIVATE include/internal)
