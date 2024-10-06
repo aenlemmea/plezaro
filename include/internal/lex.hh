@@ -34,23 +34,29 @@ enum class TOKEN_TYPE : char {
     MULTIPLY = '*',
     DIVIDE = '/',
     LPAREN = '(',
-    RPAREN = ')'
+    RPAREN = ')',
+    NULL_TERM = '\0',
 };
 
 struct TOKEN {
-    std::size_t line = 1L;
     std::string token_value;
     TOKEN_TYPE type;
-    TOKEN(TOKEN_TYPE tp, std::size_t ln, std::string tv) : line(ln), token_value(tv), type(tp){};
+    TOKEN(TOKEN_TYPE tp, std::string tv) : token_value(tv), type(tp) {}
+    TOKEN(TOKEN_TYPE tp, char tv) : token_value(std::to_string(tv)), type(tp) {}
+    TOKEN(TOKEN_TYPE tp, long tv) : token_value(tv), type(tp) {}
 };
 
 class Lexer {
 public:
-    Lexer(const std::stringstream& src) : source_stream(src) {}
-    [[nodiscard("Should use the token")]] static TOKEN lex(void);
+    Lexer(std::stringstream& src) : source_stream(src) {}
+    [[nodiscard("Should use the token")]] TOKEN lex(void);
 
 private:
-    const std::stringstream& source_stream;
+    std::size_t line_num = 1L;
+    std::stringstream& source_stream;
+    void comment(void);
+    TOKEN identifier(void);
+    TOKEN number(void);
 };
 
 #endif
