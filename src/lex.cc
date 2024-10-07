@@ -12,6 +12,7 @@ void Lexer::comment() {
             std::cerr << "Unterminated comment. @ " << line_num << std::endl;
             exit(-1);
         }
+
         if (ch == '\n') {
             line_num++;
         }
@@ -20,10 +21,11 @@ void Lexer::comment() {
 
 TOKEN Lexer::number() {
     char ch;
+
     while ((source_stream.get(ch)) && (isdigit(ch) || ch == '_')) {
         snum_val.push_back(ch);
     }
-    Logger::log(LOG_LEVEL::WARNING, "Currently snum_val is: " + snum_val);
+
     long num_val{};
     try {
         num_val = std::stol(snum_val);
@@ -102,7 +104,7 @@ TOKEN Lexer::lex(void) {
             break;
         }
     }
-
+  
     if (source_stream.eof()) {
         return TOKEN(TOKEN_TYPE::NULL_TERM, '\0');
     }
@@ -114,8 +116,10 @@ TOKEN Lexer::lex(void) {
         iden_val.push_back(ch);
         return identifier();
     }
-    if (isdigit(ch))
+    if (isdigit(ch)) {
+      snum_val.push_back(ch);
       return number();
+    }
 
     switch (ch) {
         case '{':

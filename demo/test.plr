@@ -1,1 +1,3 @@
-test := 5
+BEGIN
+	test := 5
+END
