@@ -41,9 +41,10 @@ enum class TOKEN_TYPE : char {
 struct TOKEN {
     std::string token_value;
     TOKEN_TYPE type;
-  TOKEN(TOKEN_TYPE tp, std::string tv) : token_value(tv), type(tp) { }
+    TOKEN(TOKEN_TYPE tp, std::string tv) : token_value(tv), type(tp) {}
     TOKEN(TOKEN_TYPE tp, char tv) : token_value(std::to_string(tv)), type(tp) {}
     TOKEN(TOKEN_TYPE tp, long tv) : token_value(std::to_string(tv)), type(tp) {}
+    TOKEN() = default;
     bool operator==(const TOKEN& other) const {
         return (type == other.type && token_value == other.token_value);
     }
